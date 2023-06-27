@@ -23,7 +23,7 @@
         "ext-mbstring": "*",
         "ext-openssl": "*",
         "ext-json": "*",
-        "pimple/pimple": "^3.5",
+        "pimple/pimple": "~3.0",
         "ext-iconv": "*"
     },
     "require-dev": {
