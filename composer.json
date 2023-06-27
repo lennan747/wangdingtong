@@ -18,7 +18,7 @@
     },
     "require": {
         "php": ">=7.2",
-        "guzzlehttp/guzzle": "^7.7",
+        "guzzlehttp/guzzle": "6.5.5",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-openssl": "*",
