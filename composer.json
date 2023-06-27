@@ -1,0 +1,33 @@
+{
+    "name": "lennan747/wdt-sdk",
+    "description": "A SDK.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lennan747",
+            "email": "447342672@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Lennan747\\WdtSdk\\": "src"
+        },
+        "files": [
+            "src/Helpers.php"
+        ]
+    },
+    "require": {
+        "php": ">=7.2",
+        "guzzlehttp/guzzle": "^7.7",
+        "ext-curl": "*",
+        "ext-mbstring": "*",
+        "ext-openssl": "*",
+        "ext-json": "*",
+        "pimple/pimple": "^3.5",
+        "ext-iconv": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6",
+        "mockery/mockery": "^1.5"
+    }
+}
