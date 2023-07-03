@@ -8,8 +8,22 @@ namespace Lennan747\WdtSdk\Api;
  */
 class Logistics extends Base
 {
+
+    protected $url = 'logistics.php';
+
     protected $query_url = 'logistics_sync_query.php';
+
     protected $ack_url = 'logistics_sync_ack.php';
+
+    /**
+     * @return \Lennan747\WdtSdk\Core\Collection|\Psr\Http\Message\ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Lennan747\WdtSdk\Core\Exceptions\HttpException
+     */
+    public function list()
+    {
+        return $this->request($this->url);
+    }
 
 
     /**
@@ -23,7 +37,7 @@ class Logistics extends Base
         $params = [
             'shop_no' => $this->config->get('shop_no'),
             'limit' => $limit,
-            //'is_part_sync_able' => json_encode($params, JSON_UNESCAPED_UNICODE),
+            //'is_part_sync_able' => 1,
         ];
         return $this->request($this->query_url, $params);
     }

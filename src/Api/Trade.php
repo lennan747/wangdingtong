@@ -4,7 +4,9 @@ namespace Lennan747\WdtSdk\Api;
 
 class Trade extends Base
 {
-    protected $url = 'trade_push.php';
+    protected $push_url = 'trade_push.php';
+
+    protected $query_url = 'trade_query.php';
 
     /**
      * @param array $orders
@@ -50,7 +52,12 @@ class Trade extends Base
             'trade_list' => json_encode([$orders], JSON_UNESCAPED_UNICODE),
         ];
 
-        return $this->request($this->url, $params);
+        return $this->request($this->push_url, $params);
+    }
+
+    public function query($params)
+    {
+        return $this->request($this->query_url, $params);
     }
 
 }

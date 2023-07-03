@@ -57,7 +57,7 @@ class Base
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Lennan747\WdtSdk\Core\Exceptions\HttpException
      */
-    public function request(string $api, array $params, string $method = 'post', array $options = [], bool $returnResponse = false)
+    public function request(string $api, array $params = [], string $method = 'post', array $options = [], bool $returnResponse = false)
     {
         $params = $this->generateParamsAndSign($params);
 
@@ -66,7 +66,7 @@ class Base
         $response = $this->getHttp()->request($this->getApi($api), $method, $options);
 
         if ($response->getStatusCode() !== 200) {
-            throw new HttpException('[富友支付异常]请求异常: HTTP状态码 ' . $response->getStatusCode());
+            throw new HttpException('请求异常: HTTP状态码 ' . $response->getStatusCode());
         }
         return $returnResponse ? $response : $this->parseResponse($response);
     }
@@ -107,7 +107,7 @@ class Base
      */
     protected function parseResponse($response)
     {
-        return json_decode($response->getBody()->getContents());
+        return json_decode($response->getBody()->getContents(), true);
     }
 
 
@@ -122,7 +122,7 @@ class Base
 
     protected function generateParamsAndSign(array $params): array
     {
-        $attributes = array_merge($params, $this->baseAttributes());
+        $attributes = empty($params) ? $this->baseAttributes() : array_merge($params, $this->baseAttributes());
 
         $sign = generate_sign($attributes, $this->config->get('appsecret'));
 
